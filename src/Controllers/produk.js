@@ -10,6 +10,26 @@ module.exports = {
       .then(response => formRes.showProduk1(res, response, 200))
       .catch(err => console.log(err));
   },
+  showProduknew: (req, res) => {
+    produkModel
+      .showProduknew()
+      .then(response => formRes.showProduk1(res, response, 200))
+      .catch(err => console.log(err));
+  },
+  showProdukbykategori: (req, res) => {
+    const produkKategori = req.query.kategori;
+    produkModel
+      .showProdukbykategori(produkKategori)
+      .then(response => formRes.showProduk1(res, response, 200))
+      .catch(err => console.log(err));
+  },
+  searchProduk: (req, res) => {
+    const produkSearch = req.query.nama;
+    produkModel
+      .searchProduk(produkSearch)
+      .then(response => formRes.showProduk1(res, response, 200))
+      .catch(err => console.log(err));
+  },
   addProduk: (req, res) => {
     var date = new Date();
     upload.single("gambar")(req, res, async err => {
